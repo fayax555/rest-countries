@@ -1,3 +1,4 @@
+// used in Card.tsx
 export interface CountryListItem {
   name: string
   population: number
@@ -8,6 +9,7 @@ export interface CountryListItem {
 }
 
 export interface UnfilteredCountryListItem extends CountryListItem {
+  alpha3Code: string
   nativeName: string
   borders: string[]
   topLevelDomain: string[]
@@ -19,11 +21,17 @@ export interface UnfilteredCountryListItem extends CountryListItem {
   }
 }
 
+// used in CountryInfo.tsx
 export interface CountryData extends CountryListItem {
   nativeName: string
-  borders: string[]
+  borders?: Border[]
   topLevelDomain: string[]
   currencies: { name: string }[]
   subregion: string
   languages: { name: string }[]
+}
+
+export interface Border {
+  name: string
+  alpha3Code: string
 }

@@ -36,6 +36,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
     languages,
   } = unfilteredCountryData
 
+  const borderCountryRes = borders
+    ? await fetch(
+        `https://restcountries.com/v2/alpha?codes=${borders.toString()}`
+      )
+    : null
+  const borderCountryData =
+    (await borderCountryRes?.json()) as UnfilteredCountryListItem[]
+
+  console.log(borders)
+
+  const borderCountryList = borderCountryData?.map(({ name, alpha3Code }) => ({
+    name,
+    alpha3Code,
+  }))
+
   const countryData = {
     name,
     population,
@@ -44,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     flag: flags.svg,
     alpha2Code,
     nativeName,
-    borders,
+    borders: borderCountryList,
     topLevelDomain,
     currencies,
     subregion,
@@ -52,14 +67,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-    props: { countryData },
+    props: { countryData: JSON.parse(JSON.stringify(countryData)) },
     revalidate: 1,
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch('https://restcountries.com/v2/all')
+  const unfilteredCountryList =
+    (await res.json()) as UnfilteredCountryListItem[]
+
+  const paths = unfilteredCountryList.map(({ alpha2Code }) => ({
+    params: { id: alpha2Code },
+  }))
+
   return {
-    paths: [{ params: { id: 'AF' } }],
+    paths,
     fallback: 'blocking',
   }
 }

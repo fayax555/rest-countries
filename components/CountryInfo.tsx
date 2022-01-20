@@ -20,7 +20,7 @@ const CountryInfo = (country: CountryData) => {
       <ListItem title='Currencies' dataObj={country.currencies} />
       <ListItem title='Languages' dataObj={country.languages} />
       <br />
-      <BorderCountries {...country.borders} />
+      <BorderCountries borders={country.borders} />
     </Wrapper>
   )
 }
