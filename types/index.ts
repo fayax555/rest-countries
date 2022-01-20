@@ -5,7 +5,7 @@ export interface CountryListItem {
   region: string
   capital: string
   flag: string
-  alpha2Code: string
+  alpha3Code: string
 }
 
 export interface UnfilteredCountryListItem extends CountryListItem {

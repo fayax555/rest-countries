@@ -1,17 +1,13 @@
 import CountryInfo from 'components/CountryInfo'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { CountryData, CountryListItem, UnfilteredCountryListItem } from 'types'
+import { CountryData, UnfilteredCountryListItem } from 'types'
 
 interface Props {
   countryData: CountryData
 }
 
 const CountryPage: NextPage<Props> = ({ countryData }) => {
-  return (
-    <div>
-      <CountryInfo {...countryData} />
-    </div>
-  )
+  return <CountryInfo {...countryData} />
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -27,7 +23,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     region,
     capital,
     flags,
-    alpha2Code,
+    alpha3Code,
     nativeName,
     borders,
     topLevelDomain,
@@ -44,8 +40,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const borderCountryData =
     (await borderCountryRes?.json()) as UnfilteredCountryListItem[]
 
-  console.log(borders)
-
   const borderCountryList = borderCountryData?.map(({ name, alpha3Code }) => ({
     name,
     alpha3Code,
@@ -57,7 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     region,
     capital,
     flag: flags.svg,
-    alpha2Code,
+    alpha3Code,
     nativeName,
     borders: borderCountryList,
     topLevelDomain,
@@ -77,8 +71,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const unfilteredCountryList =
     (await res.json()) as UnfilteredCountryListItem[]
 
-  const paths = unfilteredCountryList.map(({ alpha2Code }) => ({
-    params: { id: alpha2Code },
+  const paths = unfilteredCountryList.map(({ alpha3Code }) => ({
+    params: { id: alpha3Code },
   }))
 
   return {

@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import Topbar from 'components/Topbar'
 import type { AppProps } from 'next/app'
 
 const themes = {
@@ -18,7 +19,12 @@ const darkMode = {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Topbar />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp
