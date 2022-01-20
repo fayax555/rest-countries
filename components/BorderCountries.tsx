@@ -1,7 +1,7 @@
 interface Props {}
 
 const BorderCountries = (borders: string[]) => {
-  console.log(borders)
+  // console.log(borders)
   return (
     <div>
       <p>Border Countries: </p>

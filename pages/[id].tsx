@@ -21,8 +21,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const unfilteredCountryData = (await res.json()) as UnfilteredCountryListItem
 
-  console.log(unfilteredCountryData)
-
   const {
     name,
     population,

@@ -7,8 +7,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ countryList }) => {
-  console.log(countryList)
-
   return (
     <>
       {countryList.map((country) => (

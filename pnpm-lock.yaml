@@ -4,7 +4,6 @@ specifiers:
   '@types/node': 17.0.10
   '@types/react': 17.0.38
   '@types/styled-components': ^5.1.20
-  add: ^2.0.6
   eslint: 8.7.0
   eslint-config-next: 12.0.8
   next: 12.0.8
@@ -24,7 +23,6 @@ devDependencies:
   '@types/node': 17.0.10
   '@types/react': 17.0.38
   '@types/styled-components': 5.1.20
-  add: 2.0.6
   eslint: 8.7.0
   eslint-config-next: 12.0.8_1523953a9b79c75d06c9813feeadac5d
   pnpm: 6.27.1
@@ -499,10 +497,6 @@ packages:
     resolution: {integrity: sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-    dev: true
-
-  /add/2.0.6:
-    resolution: {integrity: sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=}
     dev: true
 
   /ajv/6.12.6:

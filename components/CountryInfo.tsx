@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { numberWithCommas } from 'utils'
 import type { CountryData } from 'types'
 import BorderCountries from './BorderCountries'
+import ListItem from './ListItem'
 
 const CountryInfo = (country: CountryData) => {
   return (
@@ -15,24 +16,9 @@ const CountryInfo = (country: CountryData) => {
       <p>Sub region: {country.subregion}</p>
       <p>Capital: {country.capital}</p>
       <br />
-      <p>
-        Top Level Domain:{' '}
-        {country.topLevelDomain.map((domain) => (
-          <span key={domain}>{domain} </span>
-        ))}
-      </p>
-      <p>
-        Currencies:{' '}
-        {country.currencies.map(({ name }) => (
-          <span key={name}>{name}</span>
-        ))}
-      </p>
-      <p>
-        Languages:{' '}
-        {country.languages.map(({ name }) => (
-          <span key={name}>{name}, </span>
-        ))}
-      </p>
+      <ListItem title='Top Level Domain' dataStr={country.topLevelDomain} />
+      <ListItem title='Currencies' dataObj={country.currencies} />
+      <ListItem title='Languages' dataObj={country.languages} />
       <br />
       <BorderCountries {...country.borders} />
     </Wrapper>
