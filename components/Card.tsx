@@ -25,8 +25,16 @@ const CardWrapper = styled.a`
   cursor: pointer;
   margin-left: 10rem;
   margin-top: 2rem;
+  padding: 2rem;
   width: 300px;
-  border: 2px solid #444;
+  background: ${({ theme }) => theme.el};
+  color: ${({ theme }) => theme.text};
+  font-size: ${({ theme }) => theme.sizes[1]};
+  box-shadow: ${({ theme }) => theme.shadow[1]};
+
+  > h2 {
+    font-weight: ${({ theme }) => theme.fw.extraBold};
+  }
 `
 
 export default Card

@@ -1,29 +1,27 @@
 import '../styles/globals.css'
+import { useState, useEffect } from 'react'
 import Topbar from 'components/Topbar'
+import { ThemeProvider } from 'styled-components'
+import { light, dark, GlobalStyle } from 'utils/theme'
 import type { AppProps } from 'next/app'
 
-const themes = {
-  media: {
-    bp1: '(min-width: 480px)',
-  },
-}
-
-const lightMode = {
-  ...themes,
-  text: '#444',
-}
-
-const darkMode = {
-  ...themes,
-  text: '#fff',
-}
+type Mode = 'dark' | 'light'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [mode, setMode] = useState<Mode>('light')
+
+  useEffect(() => {
+    setMode((window.localStorage.getItem('mode') as Mode) || 'light')
+  }, [])
+
+  const modes = { light, dark }
+
   return (
-    <>
-      <Topbar />
+    <ThemeProvider theme={modes[mode]}>
+      <GlobalStyle />
+      <Topbar setMode={setMode} />
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   )
 }
 

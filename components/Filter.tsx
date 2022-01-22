@@ -15,8 +15,8 @@ const Filter = ({ region, setRegion }: Props) => {
           {region ? region : 'Filter by Region'} <span aria-hidden>▾</span>
         </StyledMenuButton>
         <StyledMenuList>
-          <MenuItem onSelect={() => setRegion('Afria')}>Afria</MenuItem>
-          <MenuItem onSelect={() => setRegion('Ameria')}>Ameria</MenuItem>
+          <MenuItem onSelect={() => setRegion('Africa')}>Africa</MenuItem>
+          <MenuItem onSelect={() => setRegion('Americas')}>Americas</MenuItem>
           <MenuItem onSelect={() => setRegion('Asia')}>Asia</MenuItem>
           <MenuItem onSelect={() => setRegion('Europe')}>Europe</MenuItem>
           <MenuItem onSelect={() => setRegion('Oceania')}>Oceania</MenuItem>
@@ -32,11 +32,14 @@ const Filter = ({ region, setRegion }: Props) => {
 }
 
 const StyledMenuButton = styled(MenuButton)`
+  margin-top: 2rem;
   padding: 1rem;
   border: none;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  /* width: 130px; */
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.el};
+  box-shadow: ${({ theme }) => theme.shadow[1]};
+  width: 200px;
 
   &:focus {
     outline: 2px solid #444;
@@ -45,17 +48,20 @@ const StyledMenuButton = styled(MenuButton)`
 
 const StyledMenuList = styled(MenuList)`
   cursor: pointer;
-  background: #fff;
-  border: 2px solid #444;
+  background: ${({ theme }) => theme.el};
   margin-top: 0.25rem;
-  width: 150px;
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: ${({ theme }) => theme.shadow[1]};
+  padding: 0.5rem;
 
   > div {
-    color: red;
+    color: ${({ theme }) => theme.text};
     padding: 0.25rem 1rem;
 
     &[data-reach-menu-item][data-selected] {
       background: hsl(211, 81%, 36%);
+      border-radius: 3px;
       color: white;
       outline: none;
     }

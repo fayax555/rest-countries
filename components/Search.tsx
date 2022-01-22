@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import styled from 'styled-components'
 
 interface Props {
   search: string
@@ -7,7 +8,7 @@ interface Props {
 
 const Search = ({ search, setSearch }: Props) => {
   return (
-    <input
+    <Input
       placeholder='Search for a country...'
       type='text'
       value={search}
@@ -15,5 +16,12 @@ const Search = ({ search, setSearch }: Props) => {
     />
   )
 }
+
+const Input = styled.input`
+  color: ${({ theme }) => theme.input};
+  box-shadow: ${({ theme }) => theme.shadow[1]};
+  border: none;
+  padding: 0.25rem 1rem;
+`
 
 export default Search

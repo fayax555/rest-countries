@@ -40,16 +40,16 @@ export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('https://restcountries.com/v2/all')
   const unfilteredCountryList =
     (await res.json()) as UnfilteredCountryListItem[]
-  const countryList = unfilteredCountryList
-    .slice(0, 30)
-    .map(({ name, population, region, capital, flags, alpha3Code }) => ({
+  const countryList = unfilteredCountryList.map(
+    ({ name, population, region, capital, flags, alpha3Code }) => ({
       name,
       population,
       region,
       capital,
       flag: flags.svg,
       alpha3Code: alpha3Code.toLowerCase(),
-    }))
+    })
+  )
 
   return {
     props: { countryList: JSON.parse(JSON.stringify(countryList)) },
