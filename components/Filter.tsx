@@ -9,7 +9,7 @@ interface Props {
 
 const Filter = ({ region, setRegion }: Props) => {
   return (
-    <>
+    <div>
       <Menu>
         <StyledMenuButton>
           {region ? region : 'Filter by Region'} <span aria-hidden>▾</span>
@@ -27,12 +27,12 @@ const Filter = ({ region, setRegion }: Props) => {
           X
         </button>
       )}
-    </>
+    </div>
   )
 }
 
 const StyledMenuButton = styled(MenuButton)`
-  margin-top: 2rem;
+  display: block;
   padding: 1rem;
   border: none;
   border-radius: 5px;
@@ -53,7 +53,7 @@ const StyledMenuList = styled(MenuList)`
   width: 200px;
   border-radius: 5px;
   box-shadow: ${({ theme }) => theme.shadow[1]};
-  padding: 0.5rem;
+  padding: 0.75rem 0.25rem;
 
   > div {
     color: ${({ theme }) => theme.text};

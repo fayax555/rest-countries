@@ -18,6 +18,7 @@ export interface UnfilteredCountryListItem extends CountryListItem {
   languages: { name: string }[]
   flags: {
     svg: string
+    png: string
   }
 }
 
@@ -35,3 +36,5 @@ export interface Border {
   name: string
   alpha3Code: string
 }
+
+export type ThemeMode = 'dark' | 'light'

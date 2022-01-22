@@ -11,10 +11,12 @@ const Card = (country: CountryListItem) => {
     <Link href={`/${alpha3Code}`} passHref>
       <CardWrapper>
         <img src={flag} alt={name} />
-        <h2>{name}</h2>
-        <p>Population: {numberWithCommas(population)}</p>
-        <p>Region: {region}</p>
-        <p>Capital: {capital}</p>
+        <div>
+          <h2>{name}</h2>
+          <p>Population: {numberWithCommas(population)}</p>
+          <p>Region: {region}</p>
+          <p>Capital: {capital}</p>
+        </div>
       </CardWrapper>
     </Link>
   )
@@ -23,17 +25,21 @@ const Card = (country: CountryListItem) => {
 const CardWrapper = styled.a`
   display: block;
   cursor: pointer;
-  margin-left: 10rem;
-  margin-top: 2rem;
-  padding: 2rem;
-  width: 300px;
   background: ${({ theme }) => theme.el};
   color: ${({ theme }) => theme.text};
   font-size: ${({ theme }) => theme.sizes[1]};
   box-shadow: ${({ theme }) => theme.shadow[1]};
 
+  > img {
+    aspect-ratio: 16 / 9;
+  }
+
   > h2 {
     font-weight: ${({ theme }) => theme.fw.extraBold};
+  }
+
+  > div {
+    padding: 2rem;
   }
 `
 

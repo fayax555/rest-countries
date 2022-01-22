@@ -1,5 +1,6 @@
 import CountryInfo from 'components/CountryInfo'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Head from 'next/head'
 import { CountryData, UnfilteredCountryListItem } from 'types'
 
 interface Props {
@@ -7,7 +8,14 @@ interface Props {
 }
 
 const CountryPage: NextPage<Props> = ({ countryData }) => {
-  return <CountryInfo {...countryData} />
+  return (
+    <>
+      <Head>
+        <title>{countryData.name}</title>
+      </Head>
+      <CountryInfo {...countryData} />
+    </>
+  )
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
