@@ -40,19 +40,30 @@ const Header = styled.header`
 `
 
 const Wrapper = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0rem 16px;
   height: 80px;
+
+  @media ${({ theme }) => theme.bp2} {
+    padding: 0 40px;
+  }
+  @media ${({ theme }) => theme.bp4} {
+    padding: 0 80px;
+  }
 `
 
 const Heading = styled.h1`
   font-size: ${({ theme }) => theme.fs[5]};
   font-weight: ${({ theme }) => theme.fw.extraBold};
   letter-spacing: 0.035em;
+
+  @media ${({ theme }) => theme.bp2} {
+    font-size: ${({ theme }) => theme.fs[2]};
+  }
 `
 
 const Button = styled.button`
@@ -62,6 +73,10 @@ const Button = styled.button`
   gap: 8px;
   cursor: pointer;
   font-size: ${({ theme }) => theme.fs[6]};
+
+  @media ${({ theme }) => theme.bp2} {
+    font-size: ${({ theme }) => theme.fs[4]};
+  }
 
   > * {
     height: 16px;

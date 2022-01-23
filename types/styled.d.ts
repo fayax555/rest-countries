@@ -5,6 +5,7 @@ declare module 'styled-components' {
     bp1: string
     bp2: string
     bp3: string
+    bp4: string
     fs: {
       1: string
       2: string

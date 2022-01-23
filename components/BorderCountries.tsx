@@ -61,6 +61,10 @@ const Button = styled.a`
   border-radius: 3px;
   min-width: 100px;
   letter-spacing: 0.04em;
+
+  @media ${({ theme }) => theme.bp3} {
+    font-size: ${({ theme }) => theme.fs[4]};
+  }
 `
 
 export default BorderCountries

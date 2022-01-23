@@ -18,16 +18,19 @@ const CardList = ({ filteredList }: Props) => {
 
 const CardListWrapper = styled.section`
   display: grid;
-  gap: 40px;
   justify-content: center;
-  padding-top: 32px;
+  padding: 32px 0;
+  row-gap: 60px;
 
   @media ${({ theme }) => theme.bp2} {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-evenly;
   }
 
   @media ${({ theme }) => theme.bp3} {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+  
   }
 `
 

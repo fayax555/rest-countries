@@ -27,6 +27,10 @@ const StyledListItem = styled.div`
   > span {
     font-weight: ${({ theme }) => theme.fw.semiBold};
   }
+
+  @media ${({ theme }) => theme.bp3} {
+    font-size: ${({ theme }) => theme.fs[4]};
+  }
 `
 
 const CountryInfo = (c: CountryData) => (
@@ -69,9 +73,16 @@ const CountryInfo = (c: CountryData) => (
 )
 
 const Wrapper = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   margin: auto;
   padding: 40px 28px;
+
+  @media ${({ theme }) => theme.bp2} {
+    padding: 40px 40px;
+  }
+  @media ${({ theme }) => theme.bp4} {
+    padding: 40px 80px;
+  }
 `
 
 const BackButton = styled.button`
@@ -88,6 +99,7 @@ const BackButton = styled.button`
   width: 104px;
   margin-bottom: 64px;
   border-radius: 3px;
+  letter-spacing: 0.05em;
 `
 
 const StyledArrowLeft = styled(CgArrowLeft)`
@@ -97,6 +109,7 @@ const StyledArrowLeft = styled(CgArrowLeft)`
 
 const Content = styled.div`
   display: grid;
+  justify-items: center;
   gap: 44px;
 
   @media ${({ theme }) => theme.bp3} {
@@ -108,11 +121,21 @@ const Content = styled.div`
 const Flag = styled.img`
   width: 320px;
   height: 230px;
+
+  @media ${({ theme }) => theme.bp2} {
+    width: 500px;
+    height: 357px;
+  }
+  @media ${({ theme }) => theme.bp3} {
+    width: 560px;
+    height: 401px;
+  }
 `
 
 const Details = styled.div`
   display: grid;
   gap: 30px;
+  max-width: 320px;
 
   > h2 {
     font-weight: ${({ theme }) => theme.fw.extraBold};
@@ -124,14 +147,26 @@ const Details = styled.div`
     margin-bottom: 8px;
   }
 
-  @media ${({ theme }) => theme.bp3} {
+  @media ${({ theme }) => theme.bp2} {
     align-content: center;
     grid-template-columns: 1fr 1fr;
+    max-width: 500px;
+
+    > h2 {
+      font-weight: ${({ theme }) => theme.fw.extraBold};
+      letter-spacing: 0.005em;
+      font-size: ${({ theme }) => theme.fs[1]};
+      letter-spacing: 0.02em;
+    }
 
     > h2,
     > *:last-child {
       grid-column: 1 / -1;
     }
+  }
+
+  @media ${({ theme }) => theme.bp3} {
+    max-width: revert;
   }
 `
 

@@ -5,7 +5,6 @@ import Search from 'components/Search'
 import Filter from 'components/Filter'
 import styled from 'styled-components'
 import CardList from 'components/CardList'
-
 import type { CountryListItem, UnfilteredCountryListItem } from 'types'
 
 interface Props {
@@ -41,8 +40,21 @@ const Home: NextPage<Props> = ({ countryList }) => {
 }
 
 const Wrapper = styled.div`
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
+  margin-top: 24px;
+
+  @media ${({ theme }) => theme.bp2} {
+    margin-top: 48px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media ${({ theme }) => theme.bp4} {
+    margin-top: 48px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
 `
 
 const FilterWrapper = styled.section`
@@ -51,8 +63,9 @@ const FilterWrapper = styled.section`
   flex-direction: column;
   padding: 0 16px;
 
-  @media ${({ theme }) => theme.bp3} {
+  @media ${({ theme }) => theme.bp2} {
     flex-direction: row;
+    padding: 0;
   }
 `
 

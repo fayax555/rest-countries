@@ -36,7 +36,7 @@ const CardWrapper = styled.a`
   box-shadow: ${({ theme }) => theme.shadow[1]};
   height: 336px;
   width: 264px;
-  border-radius: 5px;
+  border-radius: 3px;
 
   > img {
     height: 159px;

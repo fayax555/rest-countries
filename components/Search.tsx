@@ -25,10 +25,12 @@ const Search = ({ search, setSearch }: Props) => {
 }
 
 const InputWrapper = styled.div`
-  /* height: 100%; */
   position: relative;
-  margin-top: 24px;
   margin-bottom: 40px;
+
+  @media ${({ theme }) => theme.bp3} {
+    margin-bottom: 16px;
+  }
 `
 
 const StyledIcon = styled(IoIosSearch)`
@@ -49,16 +51,18 @@ const Input = styled.input`
   border: none;
   padding: 1rem 4.5rem;
   display: block;
-  border-radius: 5px;
+  border-radius: 3px;
   width: 100%;
   height: 50px;
+  letter-spacing: 0.045em;
 
   &::placeholder {
     color: ${({ theme }) => theme.text};
   }
 
   @media ${({ theme }) => theme.bp3} {
-    width: 450px;
+    font-size: ${({ theme }) => theme.fs[5]};
+    width: 480px;
   }
 `
 

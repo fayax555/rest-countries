@@ -37,22 +37,26 @@ const Filter = ({ region, setRegion }: Props) => {
 
 const StyledMenuButton = styled(MenuButton)`
   all: unset;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  border: none;
-  border-radius: 5px;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.el};
   box-shadow: ${({ theme }) => theme.shadow[1]};
   font-size: ${({ theme }) => theme.fs[6]};
   font-weight: ${({ theme }) => theme.fw.semiBold};
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  border-radius: 3px;
   width: 200px;
   height: 50px;
   padding: 0 24px;
 
   &:focus {
     outline: 2px solid #444;
+  }
+
+  @media ${({ theme }) => theme.bp3} {
+    font-size: ${({ theme }) => theme.fs[5]};
   }
 `
 
@@ -63,7 +67,7 @@ const StyledMenuList = styled(MenuList)`
   font-weight: ${({ theme }) => theme.fw.semiBold};
   cursor: pointer;
   width: 200px;
-  border-radius: 5px;
+  border-radius: 3px;
   margin-top: 4px;
   padding: 6px 0;
 
