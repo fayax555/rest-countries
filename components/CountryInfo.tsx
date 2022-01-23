@@ -11,12 +11,13 @@ interface ListItemProps {
   value: string
 }
 
-const ListItem = ({ title, value }: ListItemProps) => (
-  <StyledListItem>
-    <span>{title}: </span>
-    {value}
-  </StyledListItem>
-)
+const ListItem = ({ title, value }: ListItemProps) =>
+  value ? (
+    <StyledListItem>
+      <span>{title}: </span>
+      {value}
+    </StyledListItem>
+  ) : null
 
 const StyledListItem = styled.div`
   font-size: ${({ theme }) => theme.fs[5]};
@@ -54,7 +55,7 @@ const CountryInfo = (c: CountryData) => (
           />
           <ListItem
             title='Currencies'
-            value={c.currencies.map(({ name }) => name).join(', ')}
+            value={c.currencies?.map(({ name }) => name).join(', ')}
           />
           <ListItem
             title='Languages'
