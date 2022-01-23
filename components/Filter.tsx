@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import styled from 'styled-components'
+import { RiArrowDownSLine } from 'react-icons/ri'
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button'
 
 interface Props {
@@ -12,7 +13,10 @@ const Filter = ({ region, setRegion }: Props) => {
     <div>
       <Menu>
         <StyledMenuButton>
-          {region ? region : 'Filter by Region'} <span aria-hidden>▾</span>
+          <span>{region ? region : 'Filter by Region'} </span>
+          <span aria-hidden>
+            <StyledArrowDown />
+          </span>
         </StyledMenuButton>
         <StyledMenuList>
           <MenuItem onSelect={() => setRegion('Africa')}>Africa</MenuItem>
@@ -32,14 +36,20 @@ const Filter = ({ region, setRegion }: Props) => {
 }
 
 const StyledMenuButton = styled(MenuButton)`
-  display: block;
-  padding: 1rem;
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
   border: none;
   border-radius: 5px;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.el};
   box-shadow: ${({ theme }) => theme.shadow[1]};
+  font-size: ${({ theme }) => theme.fs[6]};
+  font-weight: ${({ theme }) => theme.fw.semiBold};
   width: 200px;
+  height: 50px;
+  padding: 0 24px;
 
   &:focus {
     outline: 2px solid #444;
@@ -47,17 +57,20 @@ const StyledMenuButton = styled(MenuButton)`
 `
 
 const StyledMenuList = styled(MenuList)`
-  cursor: pointer;
   background: ${({ theme }) => theme.el};
-  margin-top: 0.25rem;
+  box-shadow: ${({ theme }) => theme.shadow[1]};
+  font-size: ${({ theme }) => theme.fs[6]};
+  font-weight: ${({ theme }) => theme.fw.semiBold};
+  cursor: pointer;
   width: 200px;
   border-radius: 5px;
-  box-shadow: ${({ theme }) => theme.shadow[1]};
-  padding: 0.75rem 0.25rem;
+  margin-top: 4px;
+  padding: 6px 0;
 
   > div {
     color: ${({ theme }) => theme.text};
-    padding: 0.25rem 1rem;
+    padding: 7.5px 0;
+    padding-left: 24px;
 
     &[data-reach-menu-item][data-selected] {
       background: hsl(211, 81%, 36%);
@@ -66,6 +79,10 @@ const StyledMenuList = styled(MenuList)`
       outline: none;
     }
   }
+`
+
+const StyledArrowDown = styled(RiArrowDownSLine)`
+  transform: translateY(3px);
 `
 
 export default Filter

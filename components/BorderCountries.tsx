@@ -8,20 +8,22 @@ interface Props {
 }
 
 const BorderCountries = ({ borders }: Props) => {
-  if (!borders) return null
-  
   return (
     <Wrapper>
-      <span>Border Countries:</span>
-      <ButtonsWrapper>
-        {borders.map(({ name, alpha3Code }) => (
-          <Fragment key={name}>
-            <Link href={`/${alpha3Code}`} passHref>
-              <Button>{name} </Button>
-            </Link>
-          </Fragment>
-        ))}
-      </ButtonsWrapper>
+      {borders && (
+        <>
+          <Title>Border Countries:</Title>
+          <ButtonsWrapper>
+            {borders.map(({ name, alpha3Code }) => (
+              <Fragment key={name}>
+                <Link href={`/${alpha3Code}`} passHref>
+                  <Button>{name} </Button>
+                </Link>
+              </Fragment>
+            ))}
+          </ButtonsWrapper>
+        </>
+      )}
     </Wrapper>
   )
 }
@@ -29,29 +31,36 @@ const BorderCountries = ({ borders }: Props) => {
 const Wrapper = styled.div`
   align-items: center;
   gap: 1rem;
-  > span {
-    font-weight: ${({ theme }) => theme.fw.semiBold};
-  }
-  @media (min-width: 1000px) {
+  @media ${({ theme }) => theme.bp3} {
     display: flex;
   }
+`
+
+const Title = styled.h2`
+  font-size: ${({ theme }) => theme.fs[4]};
+  font-weight: ${({ theme }) => theme.fw.semiBold};
 `
 
 const ButtonsWrapper = styled.div`
   margin: 1rem 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 8px;
 `
 
 const Button = styled.a`
   all: unset;
   display: block;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: ${({ theme }) => theme.fs[7]};
   box-shadow: ${({ theme }) => theme.shadow[1]};
+  background: ${({ theme }) => theme.el};
   align-items: center;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 3px;
+  min-width: 100px;
+  letter-spacing: 0.04em;
 `
 
 export default BorderCountries

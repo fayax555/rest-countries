@@ -2,14 +2,17 @@ import 'styled-components'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    // media?: {
-    //   bp1: string
-    //   bp2: string
-    //   bp3: string
-    // }
-    sizes: {
+    bp1: string
+    bp2: string
+    bp3: string
+    fs: {
       1: string
       2: string
+      3: string
+      4: string
+      5: string
+      6: string
+      7: string
     }
     fw: {
       light: string

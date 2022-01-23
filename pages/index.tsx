@@ -4,8 +4,9 @@ import Head from 'next/head'
 import Search from 'components/Search'
 import Filter from 'components/Filter'
 import styled from 'styled-components'
-import type { CountryListItem, UnfilteredCountryListItem } from 'types'
 import CardList from 'components/CardList'
+
+import type { CountryListItem, UnfilteredCountryListItem } from 'types'
 
 interface Props {
   countryList: CountryListItem[]
@@ -26,7 +27,7 @@ const Home: NextPage<Props> = ({ countryList }) => {
   )
 
   return (
-    <div>
+    <Wrapper>
       <Head>
         <title>Search Countries</title>
       </Head>
@@ -35,20 +36,23 @@ const Home: NextPage<Props> = ({ countryList }) => {
         <Filter {...{ region, setRegion }} />
       </FilterWrapper>
       <CardList {...{ filteredList }} />
-    </div>
+    </Wrapper>
   )
 }
 
+const Wrapper = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+`
+
 const FilterWrapper = styled.section`
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  gap: 2rem;
-  padding: 0 2rem;
-  margin-top: 2rem;
+  padding: 0 16px;
 
-  @media (min-width: 1100px) {
+  @media ${({ theme }) => theme.bp3} {
     flex-direction: row;
-    justify-content: space-between;
   }
 `
 
@@ -56,16 +60,16 @@ export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('https://restcountries.com/v2/all')
   const unfilteredCountryList =
     (await res.json()) as UnfilteredCountryListItem[]
-  const countryList = unfilteredCountryList
-    .slice(0, 20)
-    .map(({ name, population, region, capital, flags, alpha3Code }) => ({
+  const countryList = unfilteredCountryList.map(
+    ({ name, population, region, capital, flags, alpha3Code }) => ({
       name,
       population,
       region,
       capital,
       flag: flags.png,
       alpha3Code: alpha3Code.toLowerCase(),
-    }))
+    })
+  )
 
   return {
     props: { countryList: JSON.parse(JSON.stringify(countryList)) },

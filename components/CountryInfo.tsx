@@ -19,7 +19,10 @@ const ListItem = ({ title, value }: ListItemProps) => (
 )
 
 const StyledListItem = styled.div`
-  line-height: 1.8;
+  font-size: ${({ theme }) => theme.fs[5]};
+  line-height: 30px;
+  letter-spacing: 0.035em;
+
   > span {
     font-weight: ${({ theme }) => theme.fw.semiBold};
   }
@@ -29,12 +32,12 @@ const CountryInfo = (c: CountryData) => (
   <Wrapper>
     <Link href={`/`} passHref>
       <BackButton>
-        <CgArrowLeft />
-        Back
+        <StyledArrowLeft />
+        <span>Back</span>
       </BackButton>
     </Link>
     <Content>
-      <img src={c.flag} alt={c.name} />
+      <Flag src={c.flag} alt={c.name} />
       <Details>
         <h2>{c.name}</h2>
         <div>
@@ -64,11 +67,63 @@ const CountryInfo = (c: CountryData) => (
   </Wrapper>
 )
 
+const Wrapper = styled.div`
+  max-width: 1400px;
+  margin: auto;
+  padding: 40px 28px;
+`
+
+const BackButton = styled.button`
+  all: unset;
+  box-shadow: ${({ theme }) => theme.shadow[2]};
+  background: ${({ theme }) => theme.el};
+  font-size: ${({ theme }) => theme.fs[5]};
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  height: 32px;
+  width: 104px;
+  margin-bottom: 64px;
+  border-radius: 3px;
+`
+
+const StyledArrowLeft = styled(CgArrowLeft)`
+  height: 16px;
+  width: 16px;
+`
+
+const Content = styled.div`
+  display: grid;
+  gap: 44px;
+
+  @media ${({ theme }) => theme.bp3} {
+    justify-content: space-between;
+    grid-template-columns: 45% 50%;
+  }
+`
+
+const Flag = styled.img`
+  width: 320px;
+  height: 230px;
+`
+
 const Details = styled.div`
   display: grid;
-  gap: 1rem 2rem;
+  gap: 30px;
 
-  @media (min-width: 1000px) {
+  > h2 {
+    font-weight: ${({ theme }) => theme.fw.extraBold};
+    letter-spacing: 0.005em;
+    font-size: ${({ theme }) => theme.fs[3]};
+  }
+
+  > div {
+    margin-bottom: 8px;
+  }
+
+  @media ${({ theme }) => theme.bp3} {
     align-content: center;
     grid-template-columns: 1fr 1fr;
 
@@ -76,41 +131,6 @@ const Details = styled.div`
     > *:last-child {
       grid-column: 1 / -1;
     }
-  }
-`
-
-const Wrapper = styled.div`
-  max-width: 300px;
-  margin: 1rem auto;
-  padding: 1rem;
-
-  @media (min-width: 1000px) {
-    max-width: 1100px;
-  }
-`
-
-const Content = styled.div`
-  @media (min-width: 1000px) {
-    display: grid;
-    justify-content: space-between;
-    grid-template-columns: 45% 50%;
-    gap: 1rem;
-  }
-`
-
-const BackButton = styled.button`
-  all: unset;
-  padding: 0.5rem 2rem;
-  margin-bottom: 3rem;
-  box-shadow: ${({ theme }) => theme.shadow[2]};
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 5px;
-
-  > * {
-    font-size: 1.5rem;
   }
 `
 

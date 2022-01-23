@@ -12,14 +12,17 @@
 import { createGlobalStyle } from 'styled-components'
 
 const theme = {
-  media: {
-    bp1: '(min-width: 480px)',
-    bp2: '(min-width: 800px)',
-    bp3: '(min-width: 1000px)',
-  },
-  sizes: {
-    1: '14px',
-    2: '16px',
+  bp1: `(min-width: ${480 / 16}rem)`,
+  bp2: `(min-width: ${800 / 16}rem)`,
+  bp3: `(min-width: ${1100 / 16}rem)`,
+  fs: {
+    1: `${30 / 16}rem`,
+    2: `${24 / 16}rem`,
+    3: `${21 / 16}rem`,
+    4: `${16 / 16}rem`,
+    5: `${13 / 16}rem`,
+    6: `${12 / 16}rem`,
+    7: `${11 / 16}rem`,
   },
   fw: {
     light: '300',
@@ -27,8 +30,8 @@ const theme = {
     extraBold: '800',
   },
   shadow: {
-    1: '0px 0 5px rgba(0, 0, 0, 0.25)',
-    2: '0px 0 5px rgba(0, 0, 0, 0.5)',
+    1: '0px 1px 6px rgba(0, 0, 0, 0.1)',
+    2: '0px 0px 10px rgba(0, 0, 0, 0.35)',
   },
 }
 

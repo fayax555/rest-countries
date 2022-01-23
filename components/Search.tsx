@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import styled from 'styled-components'
-import { FaSearch } from 'react-icons/fa'
+import { IoIosSearch } from 'react-icons/io'
 
 interface Props {
   search: string
@@ -11,7 +11,7 @@ const Search = ({ search, setSearch }: Props) => {
   return (
     <InputWrapper>
       <label htmlFor='search'>
-        <StyledFaSearch />
+        <StyledIcon />
       </label>
       <Input
         placeholder='Search for a country...'
@@ -25,25 +25,39 @@ const Search = ({ search, setSearch }: Props) => {
 }
 
 const InputWrapper = styled.div`
-  height: 100%;
+  /* height: 100%; */
   position: relative;
+  margin-top: 24px;
+  margin-bottom: 40px;
 `
 
-const StyledFaSearch = styled(FaSearch)`
+const StyledIcon = styled(IoIosSearch)`
   position: absolute;
-  top: 1rem;
+  top: 26%;
   left: 2rem;
+  height: 20px;
+  width: 20px;
+  font-size: 1.25rem;
 `
 
 const Input = styled.input`
-  color: ${({ theme }) => theme.input};
+  color: ${({ theme }) => theme.text};
+  font-size: ${({ theme }) => theme.fs[6]};
+  letter-spacing: 0.01em;
   box-shadow: ${({ theme }) => theme.shadow[1]};
+  background: ${({ theme }) => theme.el};
   border: none;
   padding: 1rem 4.5rem;
   display: block;
   border-radius: 5px;
+  width: 100%;
+  height: 50px;
 
-  @media (min-width: 1100px) {
+  &::placeholder {
+    color: ${({ theme }) => theme.text};
+  }
+
+  @media ${({ theme }) => theme.bp3} {
     width: 450px;
   }
 `
