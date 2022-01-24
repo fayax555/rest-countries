@@ -9,13 +9,12 @@ export interface CountryListItem {
 }
 
 export interface UnfilteredCountryListItem extends CountryListItem {
-  alpha3Code: string
   nativeName: string
   borders: string[]
   topLevelDomain: string[]
-  currencies: { name: string }[]
-  subregion: string
-  languages: { name: string }[]
+  currencies?: { name: string }[]
+  subregion?: string
+  languages?: { name: string }[]
   flags: {
     svg: string
     png: string
@@ -25,14 +24,14 @@ export interface UnfilteredCountryListItem extends CountryListItem {
 // used in CountryInfo.tsx
 export interface CountryData extends CountryListItem {
   nativeName: string
-  borders?: Border[]
-  topLevelDomain: string[]
-  currencies: { name: string }[]
-  subregion: string
-  languages: { name: string }[]
+  borders: Border[]
+  topLevelDomain?: string[]
+  currencies?: { name: string }[]
+  subregion?: string
+  languages?: { name: string }[]
 }
 
-export interface Border {
+interface Border {
   name: string
   alpha3Code: string
 }

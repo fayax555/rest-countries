@@ -7,16 +7,14 @@ interface Props {
   countryData: CountryData
 }
 
-const CountryPage: NextPage<Props> = ({ countryData }) => {
-  return (
-    <>
-      <Head>
-        <title>{countryData.name}</title>
-      </Head>
-      <CountryInfo {...countryData} />
-    </>
-  )
-}
+const CountryPage = ({ countryData }: Props) => (
+  <>
+    <Head>
+      <title>{countryData.name}</title>
+    </Head>
+    <CountryInfo {...countryData} />
+  </>
+)
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch(

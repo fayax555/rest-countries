@@ -8,32 +8,30 @@ interface Props {
   setRegion: Dispatch<SetStateAction<string>>
 }
 
-const Filter = ({ region, setRegion }: Props) => {
-  return (
-    <div>
-      <Menu>
-        <StyledMenuButton>
-          <span>{region ? region : 'Filter by Region'} </span>
-          <span aria-hidden>
-            <StyledArrowDown />
-          </span>
-        </StyledMenuButton>
-        <StyledMenuList>
-          <MenuItem onSelect={() => setRegion('Africa')}>Africa</MenuItem>
-          <MenuItem onSelect={() => setRegion('Americas')}>Americas</MenuItem>
-          <MenuItem onSelect={() => setRegion('Asia')}>Asia</MenuItem>
-          <MenuItem onSelect={() => setRegion('Europe')}>Europe</MenuItem>
-          <MenuItem onSelect={() => setRegion('Oceania')}>Oceania</MenuItem>
-        </StyledMenuList>
-      </Menu>
-      {region && (
-        <button title='remove filter' onClick={() => setRegion('')}>
-          X
-        </button>
-      )}
-    </div>
-  )
-}
+const Filter = ({ region, setRegion }: Props) => (
+  <div>
+    <Menu>
+      <StyledMenuButton>
+        <span>{region ? region : 'Filter by Region'} </span>
+        <span aria-hidden>
+          <StyledArrowDown />
+        </span>
+      </StyledMenuButton>
+      <StyledMenuList>
+        <MenuItem onSelect={() => setRegion('Africa')}>Africa</MenuItem>
+        <MenuItem onSelect={() => setRegion('Americas')}>Americas</MenuItem>
+        <MenuItem onSelect={() => setRegion('Asia')}>Asia</MenuItem>
+        <MenuItem onSelect={() => setRegion('Europe')}>Europe</MenuItem>
+        <MenuItem onSelect={() => setRegion('Oceania')}>Oceania</MenuItem>
+      </StyledMenuList>
+    </Menu>
+    {region && (
+      <button title='remove filter' onClick={() => setRegion('')}>
+        X
+      </button>
+    )}
+  </div>
+)
 
 const StyledMenuButton = styled(MenuButton)`
   all: unset;

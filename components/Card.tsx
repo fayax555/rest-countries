@@ -1,32 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 import styled from 'styled-components'
 import Link from 'next/link'
-import type { CountryListItem } from 'types'
 import { numberWithCommas } from 'utils'
+import type { CountryListItem } from 'types'
 
-const Card = (country: CountryListItem) => {
-  const { name, population, region, flag, capital, alpha3Code } = country
-
-  return (
-    <Link href={`/${alpha3Code}`} passHref>
-      <CardWrapper>
-        <img src={flag} alt={name} />
-        <div>
-          <h2>{name}</h2>
-          <p>
-            <span>Population:</span> {numberWithCommas(population)}
-          </p>
-          <p>
-            <span>Region:</span> {region}
-          </p>
-          <p>
-            <span>Capital:</span> {capital}
-          </p>
-        </div>
-      </CardWrapper>
-    </Link>
-  )
-}
+const Card = (c: CountryListItem) => (
+  <Link href={`/${c.alpha3Code}`} passHref>
+    <CardWrapper>
+      <img src={c.flag} alt={c.name} />
+      <div>
+        <h2>{c.name}</h2>
+        <p>
+          <span>Population:</span> {numberWithCommas(c.population)}
+        </p>
+        <p>
+          <span>Region:</span> {c.region}
+        </p>
+        <p>
+          <span>Capital:</span> {c.capital}
+        </p>
+      </div>
+    </CardWrapper>
+  </Link>
+)
 
 const CardWrapper = styled.a`
   display: block;

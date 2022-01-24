@@ -1,32 +1,30 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Border } from 'types'
+import { CountryData } from 'types'
 
 interface Props {
-  borders?: Border[]
+  borders: CountryData['borders']
 }
 
-const BorderCountries = ({ borders }: Props) => {
-  return (
-    <Wrapper>
-      {borders && (
-        <>
-          <Title>Border Countries:</Title>
-          <ButtonsWrapper>
-            {borders.map(({ name, alpha3Code }) => (
-              <Fragment key={name}>
-                <Link href={`/${alpha3Code}`} passHref>
-                  <Button>{name} </Button>
-                </Link>
-              </Fragment>
-            ))}
-          </ButtonsWrapper>
-        </>
-      )}
-    </Wrapper>
-  )
-}
+const BorderCountries = ({ borders }: Props) => (
+  <Wrapper>
+    {borders && (
+      <>
+        <Title>Border Countries:</Title>
+        <ButtonsWrapper>
+          {borders.map(({ name, alpha3Code }) => (
+            <Fragment key={name}>
+              <Link href={`/${alpha3Code}`} passHref>
+                <Button>{name} </Button>
+              </Link>
+            </Fragment>
+          ))}
+        </ButtonsWrapper>
+      </>
+    )}
+  </Wrapper>
+)
 
 const Wrapper = styled.div`
   align-items: center;

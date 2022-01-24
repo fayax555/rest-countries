@@ -7,22 +7,20 @@ interface Props {
   setSearch: Dispatch<SetStateAction<string>>
 }
 
-const Search = ({ search, setSearch }: Props) => {
-  return (
-    <InputWrapper>
-      <label htmlFor='search'>
-        <StyledIcon />
-      </label>
-      <Input
-        placeholder='Search for a country...'
-        type='text'
-        id='search'
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-    </InputWrapper>
-  )
-}
+const Search = ({ search, setSearch }: Props) => (
+  <InputWrapper>
+    <label htmlFor='search'>
+      <StyledIcon />
+    </label>
+    <Input
+      placeholder='Search for a country...'
+      type='text'
+      id='search'
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+  </InputWrapper>
+)
 
 const InputWrapper = styled.div`
   position: relative;

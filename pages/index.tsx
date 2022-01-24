@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, SetStateAction, Dispatch } from 'react'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Search from 'components/Search'
@@ -9,11 +9,14 @@ import type { CountryListItem, UnfilteredCountryListItem } from 'types'
 
 interface Props {
   countryList: CountryListItem[]
+  search: string
+  region: string
+  setSearch: Dispatch<SetStateAction<string>>
+  setRegion: Dispatch<SetStateAction<string>>
 }
 
-const Home: NextPage<Props> = ({ countryList }) => {
-  const [search, setSearch] = useState('')
-  const [region, setRegion] = useState('')
+const Home = (props: Props) => {
+  const { countryList, search, region, setSearch, setRegion } = props
 
   const filteredList = useMemo(
     () =>
@@ -29,6 +32,7 @@ const Home: NextPage<Props> = ({ countryList }) => {
     <Wrapper>
       <Head>
         <title>Search Countries</title>
+        <meta name='description' content='Search for country information' />
       </Head>
       <FilterWrapper>
         <Search {...{ search, setSearch }} />

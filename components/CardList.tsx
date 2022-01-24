@@ -6,17 +6,15 @@ interface Props {
   filteredList: CountryListItem[]
 }
 
-const CardList = ({ filteredList }: Props) => {
-  return (
-    <CardListWrapper>
-      {filteredList.map((country) => (
-        <Card key={country.alpha3Code} {...country} />
-      ))}
-    </CardListWrapper>
-  )
-}
+const CardList = ({ filteredList }: Props) => (
+  <CardListWrapper count={filteredList.length}>
+    {filteredList.map((country) => (
+      <Card key={country.alpha3Code} {...country} />
+    ))}
+  </CardListWrapper>
+)
 
-const CardListWrapper = styled.section`
+const CardListWrapper = styled.section<{ count: number }>`
   display: grid;
   justify-content: center;
   padding: 32px 0;
@@ -28,9 +26,8 @@ const CardListWrapper = styled.section`
   }
 
   @media ${({ theme }) => theme.bp3} {
-    grid-template-columns: repeat(4, auto);
-    justify-content: space-between;
-  
+    grid-template-columns: repeat(${(p) => (p.count < 4 ? p.count : 4)}, auto);
+    justify-content: ${(p) => (p.count < 4 ? 'space-evenly' : 'space-between')};
   }
 `
 

@@ -8,7 +8,7 @@ import type { CountryData } from 'types'
 
 interface ListItemProps {
   title: string
-  value: string
+  value?: string
 }
 
 const ListItem = ({ title, value }: ListItemProps) =>
@@ -55,7 +55,7 @@ const CountryInfo = (c: CountryData) => (
         <div>
           <ListItem
             title='Top Level Domain'
-            value={c.topLevelDomain.join(', ')}
+            value={c.topLevelDomain?.join(', ')}
           />
           <ListItem
             title='Currencies'
@@ -63,7 +63,7 @@ const CountryInfo = (c: CountryData) => (
           />
           <ListItem
             title='Languages'
-            value={c.languages.map(({ name }) => name).join(', ')}
+            value={c.languages?.map(({ name }) => name).join(', ')}
           />
         </div>
         <BorderCountries borders={c.borders} />
