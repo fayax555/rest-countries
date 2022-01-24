@@ -107,7 +107,7 @@ const Content = styled.div`
 
   @media ${({ theme }) => theme.bp3} {
     justify-content: space-between;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: 50% 45%;
   }
 `
 
@@ -121,7 +121,8 @@ const Flag = styled.img`
   }
   @media ${({ theme }) => theme.bp3} {
     width: 560px;
-    height: 401px;
+    height: revert;
+    /* height: 401px; */
   }
 `
 

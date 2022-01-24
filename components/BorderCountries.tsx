@@ -15,7 +15,7 @@ const BorderCountries = ({ borders }: Props) => (
         <ButtonsWrapper>
           {borders.map(({ name, alpha3Code }) => (
             <Fragment key={name}>
-              <Link href={`/${alpha3Code}`} passHref>
+              <Link href={`/${alpha3Code.toLowerCase()}`} passHref>
                 <Button>{name} </Button>
               </Link>
             </Fragment>
@@ -58,7 +58,7 @@ const Button = styled.a`
   cursor: pointer;
   border-radius: 3px;
   min-width: 100px;
-  height: 28px;
+  padding: 0.5em 1em;
   letter-spacing: 0.04em;
 
   @media ${({ theme }) => theme.bp3} {
