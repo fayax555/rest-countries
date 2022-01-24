@@ -27,7 +27,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+Desktop
+  <img src="_fem-screenshots/desktop.png" alt="desktop solution screenshot" style="display:block;width:1264px;"/>
+
+Mobile
+  <img src="_fem-screenshots/mobile.png" alt="mobile solution screenshot" style="display:block;width:375px;"/>
 
 ### Links
 
