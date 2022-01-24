@@ -22,6 +22,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   )
 
   const unfilteredCountryData = (await res.json()) as UnfilteredCountryListItem
+  if (unfilteredCountryData.status === 400) {
+    return {
+      notFound: true,
+    }
+  }
 
   const {
     name,

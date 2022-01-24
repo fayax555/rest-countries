@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import styled from 'styled-components'
 import { RiArrowDownSLine } from 'react-icons/ri'
+import { TiDelete } from 'react-icons/ti'
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button'
 
 interface Props {
@@ -9,12 +10,12 @@ interface Props {
 }
 
 const Filter = ({ region, setRegion }: Props) => (
-  <div>
+  <Wrapper>
     <Menu>
       <StyledMenuButton>
         <span>{region ? region : 'Filter by Region'} </span>
         <span aria-hidden>
-          <StyledArrowDown />
+          <ArrowDownIcon />
         </span>
       </StyledMenuButton>
       <StyledMenuList>
@@ -26,12 +27,33 @@ const Filter = ({ region, setRegion }: Props) => (
       </StyledMenuList>
     </Menu>
     {region && (
-      <button title='remove filter' onClick={() => setRegion('')}>
-        X
-      </button>
+      <DeleteIcon title='remove filter' onClick={() => setRegion('')} />
     )}
-  </div>
+  </Wrapper>
 )
+
+const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+`
+
+const DeleteIcon = styled(TiDelete)`
+  cursor: pointer;
+  font-size: 2rem;
+  top: 20px;
+  transform: translateY(8px);
+
+  &:hover {
+    color: #f87373;
+  }
+
+  @media ${({ theme }) => theme.bp2} {
+    transform: revert;
+    position: absolute;
+    right: 0;
+    top: -32px;
+  }
+`
 
 const StyledMenuButton = styled(MenuButton)`
   all: unset;
@@ -74,6 +96,10 @@ const StyledMenuList = styled(MenuList)`
     padding: 7.5px 0;
     padding-left: 24px;
 
+    @media ${({ theme }) => theme.bp3} {
+      font-size: ${({ theme }) => theme.fs[5]};
+    }
+
     &[data-reach-menu-item][data-selected] {
       background: hsl(211, 81%, 36%);
       border-radius: 3px;
@@ -83,8 +109,9 @@ const StyledMenuList = styled(MenuList)`
   }
 `
 
-const StyledArrowDown = styled(RiArrowDownSLine)`
-  transform: translateY(3px);
+const ArrowDownIcon = styled(RiArrowDownSLine)`
+  transform: translateY(1px);
+  font-size: clamp(1rem, 1vw, 1.2rem);
 `
 
 export default Filter

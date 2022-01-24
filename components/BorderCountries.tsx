@@ -48,8 +48,8 @@ const ButtonsWrapper = styled.div`
 
 const Button = styled.a`
   all: unset;
-  display: block;
-  padding: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
   text-align: center;
   font-size: ${({ theme }) => theme.fs[7]};
   box-shadow: ${({ theme }) => theme.shadow[1]};
@@ -58,10 +58,11 @@ const Button = styled.a`
   cursor: pointer;
   border-radius: 3px;
   min-width: 100px;
+  height: 28px;
   letter-spacing: 0.04em;
 
   @media ${({ theme }) => theme.bp3} {
-    font-size: ${({ theme }) => theme.fs[4]};
+    font-size: ${({ theme }) => theme.fs[5]};
   }
 `
 

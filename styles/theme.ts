@@ -16,8 +16,8 @@ const theme = {
   bp2: `(min-width: ${700 / 16}rem)`,
   bp3: `(min-width: ${1250 / 16}rem)`,
   bp4: `(min-width: ${1400 / 16}rem)`,
-  tabletOnly: `(min-width: ${700 / 16}rem) and (max-width: ${1249 / 16}rem)`,
   fs: {
+    // todo fix: this should be in reverse order
     1: `${30 / 16}rem`,
     2: `${24 / 16}rem`,
     3: `${21 / 16}rem`,

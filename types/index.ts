@@ -9,6 +9,7 @@ export interface CountryListItem {
 }
 
 export interface UnfilteredCountryListItem extends CountryListItem {
+  status?: number
   nativeName: string
   borders: string[]
   topLevelDomain: string[]

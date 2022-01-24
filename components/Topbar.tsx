@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { IoMoonSharp, IoMoonOutline } from 'react-icons/io5'
 import type { ThemeMode } from 'types'
 import Link from 'next/link'
@@ -57,13 +57,13 @@ const Wrapper = styled.div`
 `
 
 const Heading = styled.h1`
-  font-size: ${({ theme }) => theme.fs[5]};
-  font-weight: ${({ theme }) => theme.fw.extraBold};
-  letter-spacing: 0.035em;
+  ${({ theme: { fs, fw } }) =>
+    css`
+      font-size: clamp(${fs[5]}, 1.2vw + 0.5rem, ${fs[2]});
+      font-weight: ${fw.extraBold};
+    `};
 
-  @media ${({ theme }) => theme.bp2} {
-    font-size: ${({ theme }) => theme.fs[2]};
-  }
+  letter-spacing: 0.035em;
 `
 
 const Button = styled.button`

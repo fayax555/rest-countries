@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { numberWithCommas } from 'utils'
 import BorderCountries from './BorderCountries'
 import Link from 'next/link'
@@ -75,14 +75,7 @@ const CountryInfo = (c: CountryData) => (
 const Wrapper = styled.div`
   max-width: 1440px;
   margin: auto;
-  padding: 40px 28px;
-
-  @media ${({ theme }) => theme.bp2} {
-    padding: 40px 40px;
-  }
-  @media ${({ theme }) => theme.bp4} {
-    padding: 40px 80px;
-  }
+  padding: clamp(40px, 7vw, 80px) clamp(28px, 7vw, 80px);
 `
 
 const BackButton = styled.button`
@@ -97,7 +90,7 @@ const BackButton = styled.button`
   padding: 0 24px;
   height: 32px;
   width: 104px;
-  margin-bottom: 64px;
+  margin-bottom: clamp(64px, 7vw, 80px);
   border-radius: 3px;
   letter-spacing: 0.05em;
 `
@@ -109,12 +102,12 @@ const StyledArrowLeft = styled(CgArrowLeft)`
 
 const Content = styled.div`
   display: grid;
-  justify-items: center;
+  justify-content: center;
   gap: 44px;
 
   @media ${({ theme }) => theme.bp3} {
     justify-content: space-between;
-    grid-template-columns: 45% 50%;
+    grid-template-columns: repeat(2, auto);
   }
 `
 
@@ -138,9 +131,10 @@ const Details = styled.div`
   max-width: 320px;
 
   > h2 {
-    font-weight: ${({ theme }) => theme.fw.extraBold};
-    letter-spacing: 0.005em;
-    font-size: ${({ theme }) => theme.fs[3]};
+    ${({ theme: { fs, fw } }) => css`
+      font-size: clamp(${fs[3]}, 0.9vw + 1.1rem, ${fs[1]});
+      font-weight: ${fw.extraBold};
+    `};
   }
 
   > div {
@@ -154,8 +148,6 @@ const Details = styled.div`
 
     > h2 {
       font-weight: ${({ theme }) => theme.fw.extraBold};
-      letter-spacing: 0.005em;
-      font-size: ${({ theme }) => theme.fs[1]};
       letter-spacing: 0.02em;
     }
 

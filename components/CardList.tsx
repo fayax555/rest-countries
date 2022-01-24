@@ -26,6 +26,7 @@ const CardListWrapper = styled.section<{ count: number }>`
   }
 
   @media ${({ theme }) => theme.bp3} {
+    gap: 75px;
     grid-template-columns: repeat(${(p) => (p.count < 4 ? p.count : 4)}, auto);
     justify-content: ${(p) => (p.count < 4 ? 'space-evenly' : 'space-between')};
   }
