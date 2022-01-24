@@ -10,7 +10,7 @@ interface Props {
 const Search = ({ search, setSearch }: Props) => (
   <InputWrapper>
     <label htmlFor='search'>
-      <StyledIcon />
+      <SearchIcon />
     </label>
     <Input
       placeholder='Search for a country...'
@@ -31,9 +31,9 @@ const InputWrapper = styled.div`
   }
 `
 
-const StyledIcon = styled(IoIosSearch)`
+const SearchIcon = styled(IoIosSearch)`
   position: absolute;
-  top: 26%;
+  top: 32%;
   left: 2rem;
   height: 20px;
   width: 20px;
@@ -51,7 +51,7 @@ const Input = styled.input`
   display: block;
   border-radius: 3px;
   width: 100%;
-  height: 50px;
+  height: 55px;
   letter-spacing: 0.045em;
 
   &::placeholder {

@@ -68,7 +68,7 @@ const StyledMenuButton = styled(MenuButton)`
   border: none;
   border-radius: 3px;
   width: 200px;
-  height: 50px;
+  height: 55px;
   padding: 0 24px;
 
   &:focus {
