@@ -43,7 +43,7 @@ const Home = (props: Props) => {
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   max-width: 1440px;
   margin: 0 auto;
   margin-top: 24px;

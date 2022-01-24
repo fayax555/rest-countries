@@ -72,7 +72,7 @@ const CountryInfo = (c: CountryData) => (
   </Wrapper>
 )
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   max-width: 1440px;
   margin: auto;
   padding: clamp(40px, 7vw, 80px) clamp(28px, 7vw, 80px);
