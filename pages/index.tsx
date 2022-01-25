@@ -18,21 +18,23 @@ interface Props {
 const Home = (props: Props) => {
   const { countryList, search, region, setSearch, setRegion } = props
   const [num, setNum] = useState(12)
-  const [y, setY] = useState(0)
+  const [screenWidth, setScreenWidth] = useState(0)
 
   const filteredList = useMemo(
     () =>
       countryList
-        .slice(0, num)
         .filter(
           (country) =>
             country.name.toLowerCase().includes(search.toLowerCase()) &&
             (!region || country.region === region)
-        ),
+        )
+        .slice(0, num),
     [countryList, num, region, search]
   )
 
   useEffect(() => {
+    setScreenWidth(window.innerHeight)
+
     const handleScroll = () => {
       const d = document.documentElement
       const diff = d.scrollHeight - (window.innerHeight + window.scrollY)
@@ -43,7 +45,8 @@ const Home = (props: Props) => {
     }
 
     const resize = () => {
-      // add more items for large viewports
+      setScreenWidth(window.innerWidth)
+      // add more items for large screens
       if (window.innerHeight > 800) setNum((num) => num + 24)
       if (window.innerHeight > 1300) setNum((num) => num + 72)
       if (window.innerHeight > 7000) setNum((num) => num + 300)
@@ -65,7 +68,7 @@ const Home = (props: Props) => {
         <meta name='description' content='Search for country information' />
       </Head>
       <FilterWrapper>
-        <Search {...{ search, setSearch }} />
+        <Search {...{ search, setSearch, screenWidth }} />
         <Filter {...{ region, setRegion }} />
       </FilterWrapper>
       <CardList {...{ filteredList }} />

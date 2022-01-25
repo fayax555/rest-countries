@@ -5,14 +5,16 @@ import { IoIosSearch } from 'react-icons/io'
 interface Props {
   search: string
   setSearch: Dispatch<SetStateAction<string>>
+  screenWidth: number
 }
 
-const Search = ({ search, setSearch }: Props) => (
+const Search = ({ search, setSearch, screenWidth }: Props) => (
   <InputWrapper>
     <label htmlFor='search'>
       <SearchIcon />
     </label>
     <Input
+      autoComplete={screenWidth < 800 ? 'off' : 'on'}
       placeholder='Search for a country...'
       type='text'
       id='search'
