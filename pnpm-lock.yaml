@@ -8,7 +8,7 @@ specifiers:
   eslint: 8.7.0
   eslint-config-next: 12.0.8
   next: 12.0.8
-  pnpm: ^6.27.1
+  pnpm: ^6.28.0
   react: 17.0.2
   react-dom: 17.0.2
   react-icons: ^4.3.1
@@ -29,7 +29,7 @@ devDependencies:
   '@types/styled-components': 5.1.20
   eslint: 8.7.0
   eslint-config-next: 12.0.8_1523953a9b79c75d06c9813feeadac5d
-  pnpm: 6.27.1
+  pnpm: 6.28.0
   typescript: 4.5.4
 
 packages:
@@ -1871,8 +1871,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pnpm/6.27.1:
-    resolution: {integrity: sha512-aW+oDXiMk9mzInmIaRv9v9+FSNkXBs60rVUO6QBpalPja0eO3J5ePSyBxAbLsuhGGbEOpwRq0aNywFq8yIi9HQ==}
+  /pnpm/6.28.0:
+    resolution: {integrity: sha512-6k0bXft4zengPSmQFx2rTkRrvp2CpXRytNAY/vjvi/7YzVm5GCDY4Uiz8A80lEEf6D1UZ32P9bG9yEiS4crmvQ==}
     engines: {node: '>=12.17'}
     hasBin: true
     dev: true

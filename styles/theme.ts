@@ -9,7 +9,7 @@
 // - Detail Page: 16px
 // - Weights: 300, 600, 800
 
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 const theme = {
   bp1: `(min-width: ${480 / 16}rem)`,
@@ -53,6 +53,22 @@ export const dark = {
 }
 
 export const GlobalStyle = createGlobalStyle`
+  ${({ theme }) =>
+    // add dark scrollbar on dark mode
+    theme.body === 'hsl(207, 26%, 17%)' &&
+    css`
+      html::-webkit-scrollbar {
+        width: 15px;
+      }
+      html::-webkit-scrollbar-track {
+        background-color: hsl(207, 26%, 12%);
+      }
+      html::-webkit-scrollbar-thumb {
+        background-color: hsl(209, 23%, 35%);
+      }
+    `};
+
+
   body {
     color: ${({ theme }) => theme.text};
     background-color: ${({ theme }) => theme.body};

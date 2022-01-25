@@ -113,16 +113,11 @@ const Content = styled.div`
 
 const Flag = styled.img`
   width: 320px;
-  height: 230px;
-
   @media ${({ theme }) => theme.bp2} {
     width: 500px;
-    height: 357px;
   }
   @media ${({ theme }) => theme.bp3} {
     width: 560px;
-    height: revert;
-    /* height: 401px; */
   }
 `
 

@@ -1,5 +1,5 @@
-import { useState, useMemo, SetStateAction, Dispatch } from 'react'
-import type { GetStaticProps, NextPage } from 'next'
+import { useState, useMemo, SetStateAction, Dispatch, useEffect } from 'react'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Search from 'components/Search'
 import Filter from 'components/Filter'
@@ -17,16 +17,46 @@ interface Props {
 
 const Home = (props: Props) => {
   const { countryList, search, region, setSearch, setRegion } = props
+  const [num, setNum] = useState(12)
+  const [y, setY] = useState(0)
 
   const filteredList = useMemo(
     () =>
-      countryList.filter(
-        (country) =>
-          country.name.toLowerCase().includes(search.toLowerCase()) &&
-          (!region || country.region === region)
-      ),
-    [countryList, region, search]
+      countryList
+        .slice(0, num)
+        .filter(
+          (country) =>
+            country.name.toLowerCase().includes(search.toLowerCase()) &&
+            (!region || country.region === region)
+        ),
+    [countryList, num, region, search]
   )
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const d = document.documentElement
+      const diff = d.scrollHeight - (window.innerHeight + window.scrollY)
+
+      if (diff < 100) {
+        setNum((num) => num + 12)
+      }
+    }
+
+    const resize = () => {
+      // add more items for large viewports
+      if (window.innerHeight > 800) setNum((num) => num + 24)
+      if (window.innerHeight > 1300) setNum((num) => num + 72)
+      if (window.innerHeight > 7000) setNum((num) => num + 300)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', resize)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', resize)
+    }
+  }, [])
 
   return (
     <Wrapper>
